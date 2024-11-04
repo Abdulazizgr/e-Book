@@ -1,7 +1,21 @@
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+  const [darkMode, setDarkMode] = useState(
+    JSON.parse(localStorage.getItem("darkMode")) || false
+  );
+
+  useEffect(() => {
+    localStorage.setItem("darkMode", JSON.stringify(darkMode));
+
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
   return (
     <header>
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -16,7 +30,20 @@ const Header = () => {
             </span>
           </Link>
           <div className="flex items-center space-x-6 rtl:space-x-reverse">
-            <span className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-gear-wide-connected"></span>
+            {  // Dark Mode Toggle
+            
+            darkMode ? (    <span
+              onClick={() => setDarkMode(!darkMode)}
+              className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-brightness-high-fill"
+            ></span> ) : (<span
+              onClick={() => setDarkMode(!darkMode)}
+              className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-moon-fill"
+            ></span>)
+             
+            
+            
+            }
+           
             <span className="cursor-pointer text-xl text-gray-700 dark:text-white mr-5 bi bi-search"></span>
             <Link to="/cart" className="text-gray-700 dark:text-white mr-5">
               <span className="text-2xl bi bi-cart-fill relative">
@@ -29,7 +56,6 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      
     </header>
   );
 };

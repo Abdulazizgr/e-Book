@@ -27,6 +27,7 @@ const ProductsList = () => {
         <div className="my-5 flex justify-between">
           <span className="text-2xl font-semibold dark:text-slate-100 mb-5">
             All eBooks ({products.length})
+            {/* {console.log(products)} */}
           </span>
           <span>
             <button

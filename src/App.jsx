@@ -1,18 +1,15 @@
-
 import "./App.css";
-import { Footer, Header } from "./components";
+import { Footer, Header, ScrollToTop } from "./components";
 import AllRoutes from "./routes/AllRoutes";
 
 function App() {
-
-
   return (
-    <>
-     <Header/>
-    
-      <AllRoutes/>
-      <Footer/>
-    </>
+    <div className="App dark:bg-dark">
+      <Header />
+      <ScrollToTop />
+      <AllRoutes />
+      <Footer />
+    </div>
   );
 }
 
